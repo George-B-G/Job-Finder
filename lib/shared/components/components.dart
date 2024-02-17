@@ -159,7 +159,7 @@ Widget customTextField({
 }) =>
     TextFormField(
       minLines: minFieldLines,
-      maxLines: maxFieldLines,
+      maxLines: maxFieldLines ?? 1,
       controller: textEditingController,
       validator: (value) => validatorFunction!(value),
       onChanged: (value) => onChangeFunction!(value),
@@ -382,3 +382,42 @@ Widget buildChoiceChip({
         },
       ).toList(),
     );
+
+Widget currentState({
+  required String image,
+  required String title,
+  required String subTitle,
+  required context,
+  bool isNeedButton = false,
+  String buttonTitle = '',
+  Widget? screen,
+}) {
+  return Padding(
+    padding: const EdgeInsets.all(10.0),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(
+          image,
+          height: 130,
+        ),
+        buildCustomTitle(
+          crossAxisAlignmentVal: CrossAxisAlignment.center,
+          textAlignVal: TextAlign.center,
+          title: title,
+          subTitle: subTitle,
+        ),
+        isNeedButton == false
+            ? const SizedBox()
+            : ElevatedButton(
+                onPressed: () => pushReplacementToPage(
+                    context: context, screenName: screen!),
+                child: Text(
+                  buttonTitle,
+                  style: Theme.of(context).primaryTextTheme.labelLarge,
+                ),
+              ),
+      ],
+    ),
+  );
+}

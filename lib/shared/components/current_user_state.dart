@@ -30,18 +30,14 @@ class CurrentUserState extends StatelessWidget {
               title: title,
               subTitle: subTitle,
             ),
-            
-           ElevatedButton(
-                    onPressed: () 
-                    =>  pushReplacementToPage(
-                          context: context, screenName: goToScreen)
-                    ,
-                    child: Text(
-                      buttonTitle,
-                      style: Theme.of(context).primaryTextTheme.labelLarge,
-                    ),
-                  )
-                ,
+            ElevatedButton(
+              onPressed: () => pushReplacementToPage(
+                  context: context, screenName: goToScreen),
+              child: Text(
+                buttonTitle,
+                style: Theme.of(context).primaryTextTheme.labelLarge,
+              ),
+            ),
           ],
         ),
       ),

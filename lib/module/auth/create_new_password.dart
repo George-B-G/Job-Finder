@@ -34,7 +34,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                   right: screenDefaultSize * 1,
                   top: screenDefaultSize * 11,
                   child: customTextField(
-                    onTapFunction: (){},
+                    onTapFunction: () {},
                     textEditingController: passowrdController,
                     hinttextValue: 'Enter new password',
                     prefixIconData: const Icon(Icons.lock),
@@ -43,7 +43,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                     suffixIconData: IconButton(
                         onPressed: () => cubit.changePasswordVisibility(),
                         icon: Icon(cubit.passwordVisibilityIcon)),
-onChangeFunction: (value){},
+                    onChangeFunction: (value) {},
                     validatorFunction: (String val) {
                       if (val.isEmpty && val.length < 8) {
                         return 'must not be empty or less than 8 characters';
@@ -58,7 +58,7 @@ onChangeFunction: (value){},
                   right: screenDefaultSize * 1,
                   top: screenDefaultSize * 20,
                   child: customTextField(
-                                        onTapFunction: (){},
+                    onTapFunction: () {},
                     textEditingController: confirmPassowrdController,
                     hinttextValue: 'Enter new password again',
                     prefixIconData: const Icon(Icons.lock),
@@ -67,7 +67,8 @@ onChangeFunction: (value){},
                     suffixIconData: IconButton(
                       icon: Icon(cubit.passwordVisibilityIcon),
                       onPressed: () => cubit.changePasswordVisibility(),
-                    ),onChangeFunction: (value){},
+                    ),
+                    onChangeFunction: (value) {},
                     validatorFunction: (String val) {
                       if (val.isEmpty && val.length < 8) {
                         return 'must not be empty or less than 8 characters';

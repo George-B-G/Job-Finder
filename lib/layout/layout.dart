@@ -1,3 +1,4 @@
+import 'package:amit_job_finder/shared/components/constant.dart';
 import 'package:amit_job_finder/shared/cubit/job_finder_cubit.dart';
 import 'package:amit_job_finder/shared/cubit/job_finder_state.dart';
 import 'package:amit_job_finder/shared/network/remote/firebase_api.dart';

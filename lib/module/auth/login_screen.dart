@@ -26,6 +26,7 @@ class LoginScreen extends StatelessWidget {
           CacheHelper.putStringData(key: 'uid', value: state.userID)
               .then((val) {
             userId = state.userID;
+            JobFinderCubit.get(context).getApiData();
             JobFinderCubit.get(context).getUserDataFunction();
             pushReplacementToPage(
               context: context,
@@ -39,6 +40,8 @@ class LoginScreen extends StatelessWidget {
           CacheHelper.putStringData(key: 'uid', value: state.userID)
               .then((val) {
             userId = state.userID;
+              // JobFinderCubit.get(context).getChatApiData();
+               JobFinderCubit.get(context).getApiData();
             JobFinderCubit.get(context).getUserDataFunction();
             pushReplacementToPage(
               context: context,

@@ -279,10 +279,15 @@ class JobFinderCubit extends Cubit<JobFinderState> {
 
   userSignOutFunction() async {
     emit(AuthSignOutLoadingState());
-    await FirebaseAuth.instance.signOut().then((value) {
+    await FirebaseAuth.instance.signOut().then((value) async {
+      GoogleSignIn googleSignIn = GoogleSignIn();
+      if (await googleSignIn.isSignedIn() == true) {
+        googleSignIn.disconnect();
+      }
       CacheHelper.putBoolData(key: 'rememberMe', value: false);
       emit(AuthSignOutSuccessState());
     }).catchError((error) {
+      print(error.toString());
       emit(AuthSignOutErrorState(error.toString()));
     });
   }

@@ -292,11 +292,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {
-                      GoogleSignIn googleSignIn = GoogleSignIn();
-                      googleSignIn.disconnect();
-                      cubitVariable.userSignOutFunction();
-                    },
+                    onPressed: () => cubitVariable.userSignOutFunction(),
                     icon: const Icon(
                       Icons.logout,
                       color: Colors.red,
@@ -315,10 +311,8 @@ class ProfileScreen extends StatelessWidget {
                 child: CircleAvatar(
                   radius: profileHeight / 2,
                   backgroundImage: NetworkImage(
-                    cubitVariable.userModel?.image == null ||
-                            cubitVariable.userModel?.image == ''
-                        ? 'https://th.bing.com/th/id/OIP.gV1cXI_SNBK_nU1yrE_hcwHaGp?w=193&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
-                        : cubitVariable.userModel!.image!,
+                    cubitVariable.userModel?.image ??
+                        'https://th.bing.com/th/id/OIP.gV1cXI_SNBK_nU1yrE_hcwHaGp?w=193&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7',
                   ),
                 ),
               ),

@@ -54,12 +54,12 @@ class ForgetPasswordScreen extends StatelessWidget {
                     right: screenDefaultSize * 1,
                     top: screenDefaultSize * 15,
                     child: customTextField(
-                                          onTapFunction: (){},
+                      onTapFunction: () {},
                       textEditingController: emailController,
                       hinttextValue: 'Enter your email...',
                       prefixIconData: const Icon(Icons.email_outlined),
                       keyboardTextInputType: TextInputType.emailAddress,
-                      onChangeFunction: (value){},
+                      onChangeFunction: (value) {},
                       validatorFunction: (String val) {
                         if (val.isEmpty) {
                           return 'must not be empty';

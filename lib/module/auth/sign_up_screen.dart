@@ -33,6 +33,7 @@ class SignUpScreen extends StatelessWidget {
             cubit.jobCardList.any((element) => element['selected'] == true
                 ? element['selected'] = false
                 : element['selected'] = false);
+                
             pushReplacementToPage(
               context: context,
               screenName: TypeOfWorkScreen(),

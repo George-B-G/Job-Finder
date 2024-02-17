@@ -15,40 +15,14 @@ class NotificationScreen extends StatelessWidget {
       ),
       body: ConditionalBuilder(
         condition: notificationList.isNotEmpty,
-        fallback: (context) => _currentState(
+        fallback: (context) => currentState(
+          context: context,
           image: 'assets/images/access_state/Notification Ilustration.png',
           title: 'No new notification yet',
           subTitle:
               'You will receive a notification if there is something on your account',
         ),
         builder: (context) => _notifiactionBody(lst: notificationList.toList()),
-      ),
-    );
-  }
-
-  Widget _currentState({
-    required String image,
-    required String title,
-    required String subTitle,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            image,
-            height: 130,
-          ),
-          verticalSpace(value: 3),
-          buildCustomTitle(
-            crossAxisAlignmentVal: CrossAxisAlignment.center,
-            textAlignVal: TextAlign.center,
-            title: title,
-            subTitle: subTitle,
-          ),
-          verticalSpace(value: 5),
-        ],
       ),
     );
   }

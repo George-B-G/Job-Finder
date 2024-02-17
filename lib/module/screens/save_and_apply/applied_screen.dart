@@ -49,7 +49,7 @@ class AppliedScreen extends StatelessWidget {
               ),
               ConditionalBuilder(
                 condition: cubit.activeOrRejected == 'Active',
-                fallback: (context) => _currentState(
+                fallback: (context) => currentState(context: context,
                   image: 'assets/images/access_state/DataIlustration(2).png',
                   title: 'No application were rejected',
                   subTitle:
@@ -67,31 +67,6 @@ class AppliedScreen extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  Widget _currentState({
-    required String image,
-    required String title,
-    required String subTitle,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            image,
-            height: 130,
-          ),
-          buildCustomTitle(
-            crossAxisAlignmentVal: CrossAxisAlignment.center,
-            textAlignVal: TextAlign.center,
-            title: title,
-            subTitle: subTitle,
-          ),
-        ],
-      ),
     );
   }
 

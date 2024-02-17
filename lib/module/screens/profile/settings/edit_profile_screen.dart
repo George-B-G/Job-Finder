@@ -36,7 +36,7 @@ class EditScreen extends StatelessWidget {
                     alignment: Alignment.center,
                     child: CircleAvatar(
                       radius: 50,
-                      backgroundImage: NetworkImage(cubit.imageURL ??
+                      backgroundImage: NetworkImage(cubit.userModel?.image ??
                           "https://th.bing.com/th?id=OIP.9hetfdrodOfI9KzE_g_dDAAAAA&w=212&h=212&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"),
                     ),
                   ),

@@ -28,9 +28,6 @@ void main() async {
     userId = CacheHelper.getStringData(key: 'uid');
     widgetScreens = const LayoutScreen();
   } else {
-    GoogleSignIn googleSignIn = GoogleSignIn();
-    googleSignIn.disconnect();
-    FirebaseAuth.instance.signOut();
     widgetScreens = const OnBoardingScreen();
   }
   runApp(const MyApp());
@@ -43,10 +40,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfiger().init(context); // to get the device size
     return BlocProvider(
-      create: (context) => JobFinderCubit()
-        ..getUserDataFunction()
-        ..getApiData(),
-      // ..getChatApiData(),
+      create: (context) {
+        if (isRememberMe == true) {
+          return JobFinderCubit()
+            ..getApiData()
+            ..getUserDataFunction();
+        } else {
+          return JobFinderCubit();
+        }
+      },
       child: BlocConsumer<JobFinderCubit, JobFinderState>(
         listener: (context, state) {},
         builder: (context, state) {

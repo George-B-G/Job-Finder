@@ -19,7 +19,8 @@ class MessageScreen extends StatelessWidget {
         var cubit = JobFinderCubit.get(context);
         return ConditionalBuilder(
           condition: cubit.apiChatData.isNotEmpty,
-          fallback: (context) => _currentState(
+          fallback: (context) => currentState(
+            context: context,
               image: 'assets/images/access_state/DataIlustration(1).png',
               title: 'You have not received any messages',
               subTitle:
@@ -146,28 +147,4 @@ class MessageScreen extends StatelessWidget {
             ));
   }
 
-  Widget _currentState({
-    required String image,
-    required String title,
-    required String subTitle,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            image,
-            height: 130,
-          ),
-          buildCustomTitle(
-            crossAxisAlignmentVal: CrossAxisAlignment.center,
-            textAlignVal: TextAlign.center,
-            title: title,
-            subTitle: subTitle,
-          ),
-        ],
-      ),
-    );
-  }
 }

@@ -88,60 +88,60 @@ class TypeOfWorkScreen extends StatelessWidget {
   }
 
   Widget _customWorkCard({
-  required BuildContext context,
-  required String cardName,
-  required IconData iconData,
-  required bool isSelected,
-  required Function onTapFunction,
-}) =>
-    GestureDetector(
-      onTap: () => onTapFunction(),
-      child: Container(
-        // width: 156,
-        // height: 125,
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: isSelected == false
-                ? const Color(0xffd1d1d5db)
-                : const Color(0xFF2E5BE3),
-          ),
-          color: isSelected == false
-              ? const Color(0xffFAFAFA)
-              : const Color(0xffD6E4FF),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: isSelected == false
-                      ? const Color(0xffd1d1d5db)
-                      : const Color(0xFF2E5BE3),
-                ),
-              ),
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Icon(
-                  iconData,
-                  color: isSelected == false
-                      ? Colors.black
-                      : const Color(0xFF2E5BE3),
-                ),
-              ),
+    required BuildContext context,
+    required String cardName,
+    required IconData iconData,
+    required bool isSelected,
+    required Function onTapFunction,
+  }) =>
+      GestureDetector(
+        onTap: () => onTapFunction(),
+        child: Container(
+          // width: 156,
+          // height: 125,
+          padding: const EdgeInsets.all(10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: isSelected == false
+                  ? const Color(0xffd1d1d5db)
+                  : const Color(0xFF2E5BE3),
             ),
-            Text(
-              cardName,
-              style: Theme.of(context).primaryTextTheme.bodyLarge,
-            )
-          ],
+            color: isSelected == false
+                ? const Color(0xffFAFAFA)
+                : const Color(0xffD6E4FF),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: isSelected == false
+                        ? const Color(0xffd1d1d5db)
+                        : const Color(0xFF2E5BE3),
+                  ),
+                ),
+                child: CircleAvatar(
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    iconData,
+                    color: isSelected == false
+                        ? Colors.black
+                        : const Color(0xFF2E5BE3),
+                  ),
+                ),
+              ),
+              Text(
+                cardName,
+                style: Theme.of(context).primaryTextTheme.bodyLarge,
+              )
+            ],
+          ),
         ),
-      ),
-    );
+      );
 }
 
 class PreferedLocationScreen extends StatelessWidget {
@@ -163,6 +163,8 @@ class PreferedLocationScreen extends StatelessWidget {
                     : jobLocation.add(element['name']));
           }
         } else if (state is UpdateUserDocSuccessState) {
+          JobFinderCubit.get(context).getApiData();
+          // JobFinderCubit.get(context).getChatApiData();
           JobFinderCubit.get(context).getUserDataFunction();
           pushReplacementToPage(
             context: context,
@@ -282,6 +284,4 @@ class PreferedLocationScreen extends StatelessWidget {
       },
     );
   }
-
-
 }
