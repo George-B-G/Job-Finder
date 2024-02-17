@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "835167087876",
+    "project_id": "job-finder-amit",
+    "storage_bucket": "job-finder-amit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:835167087876:android:165b4804aa0488904e7451",
+        "android_client_info": {
+          "package_name": "com.example.amit_job_finder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "835167087876-eintkvpkpsiqgg1segem263bbnv4c79v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb6XOimnH0nk-w0GJRUM1yscbRcJQWpyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "835167087876-eintkvpkpsiqgg1segem263bbnv4c79v.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "835167087876-rsuhf4o1n0br0jgamibcp6mef96bqd52.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.amitJobFinder"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
