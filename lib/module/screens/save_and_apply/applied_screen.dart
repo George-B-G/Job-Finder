@@ -49,7 +49,8 @@ class AppliedScreen extends StatelessWidget {
               ),
               ConditionalBuilder(
                 condition: cubit.activeOrRejected == 'Active',
-                fallback: (context) => currentState(context: context,
+                fallback: (context) => currentState(
+                  context: context,
                   image: 'assets/images/access_state/DataIlustration(2).png',
                   title: 'No application were rejected',
                   subTitle:

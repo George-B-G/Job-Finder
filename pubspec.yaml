@@ -59,10 +59,10 @@ flutter_launcher_icons:
   image_path: "assets/images/Logo.png"
 
 flutter_native_splash:
+  android: true
+  ios: true
   background_image: "assets/images/Blur.png"
   image: assets/images/Logo.png
-  android_12:
-    image: assets/images/Logo.png
 
 dev_dependencies:
   flutter_test:

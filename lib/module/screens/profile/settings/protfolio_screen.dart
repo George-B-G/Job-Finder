@@ -185,7 +185,7 @@ class ProtofolioScreen extends StatelessWidget {
                   );
                   await FirebaseStorage.instance.refFromURL(pdfLink).delete();
                   uploadedResume.clear();
-                  print('==================== \n $uploadedResume');
+                  // print('==================== \n $uploadedResume');
                 },
                 icon: const Icon(
                   Icons.cancel,

@@ -7,9 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class JobDiscriptionScreen extends StatelessWidget {
-  const JobDiscriptionScreen({super.key, required this.data});
+  JobDiscriptionScreen({super.key, required this.data});
 
   final Map<String, dynamic> data;
+  List jobs = [];
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<JobFinderCubit, JobFinderState>(
@@ -25,7 +26,14 @@ class JobDiscriptionScreen extends StatelessWidget {
             isHavingButton: true,
             lst: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  jobs.insert(0, data);
+                  cubit.updateUserDocFunction(
+                    updateMap: {
+                      'savedJobList': jobs.toSet(),
+                    },
+                  );
+                },
                 icon: const Icon(Icons.bookmark_border_outlined),
               ),
             ],

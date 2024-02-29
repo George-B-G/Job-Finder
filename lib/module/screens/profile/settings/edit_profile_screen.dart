@@ -15,7 +15,11 @@ class EditScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<JobFinderCubit, JobFinderState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is GetUserDataSuccessState) {
+          Navigator.pop(context);
+        }
+      },
       builder: (context, state) {
         var cubit = JobFinderCubit.get(context);
         nameController.text = cubit.userModel?.name ?? '';
@@ -35,10 +39,14 @@ class EditScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.center,
                     child: CircleAvatar(
-                      radius: 50,
-                      backgroundImage: NetworkImage(cubit.userModel?.image ??
-                          "https://th.bing.com/th?id=OIP.9hetfdrodOfI9KzE_g_dDAAAAA&w=212&h=212&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"),
-                    ),
+                        radius: 50,
+                        backgroundImage: NetworkImage(
+                          cubit.userModel!.image!.isNotEmpty
+                              ? cubit.userModel!.image!
+                              : (cubit.imageURL == null
+                                  ? 'https://th.bing.com/th/id/OIP.gV1cXI_SNBK_nU1yrE_hcwHaGp?w=193&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
+                                  : cubit.imageURL!),
+                        )),
                   ),
                   Align(
                     alignment: Alignment.center,

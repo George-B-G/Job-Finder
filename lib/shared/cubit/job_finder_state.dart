@@ -156,4 +156,4 @@ class ChangeSelectedLanguageState extends JobFinderState {}
 
 class ChangeJobNotificationSettingState extends JobFinderState {}
 
-class filterChoiceChipState extends JobFinderState {}
+class FilterChoiceChipState extends JobFinderState {}

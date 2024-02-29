@@ -10,11 +10,9 @@ import 'package:amit_job_finder/shared/network/local/cache_helper.dart';
 import 'package:amit_job_finder/shared/network/remote/dio_helper.dart';
 import 'package:amit_job_finder/shared/network/remote/firebase_api.dart';
 import 'package:amit_job_finder/shared/style/style.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,7 +42,8 @@ class MyApp extends StatelessWidget {
         if (isRememberMe == true) {
           return JobFinderCubit()
             ..getApiData()
-            ..getUserDataFunction();
+            ..getUserDataFunction()
+            ..getChatApiData();
         } else {
           return JobFinderCubit();
         }

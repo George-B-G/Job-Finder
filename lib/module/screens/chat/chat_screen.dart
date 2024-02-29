@@ -20,7 +20,7 @@ class MessageScreen extends StatelessWidget {
         return ConditionalBuilder(
           condition: cubit.apiChatData.isNotEmpty,
           fallback: (context) => currentState(
-            context: context,
+              context: context,
               image: 'assets/images/access_state/DataIlustration(1).png',
               title: 'You have not received any messages',
               subTitle:
@@ -146,5 +146,4 @@ class MessageScreen extends StatelessWidget {
               ),
             ));
   }
-
 }

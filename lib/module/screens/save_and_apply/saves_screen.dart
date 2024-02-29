@@ -18,10 +18,13 @@ class SavedScreen extends StatelessWidget {
         var cubit = JobFinderCubit.get(context);
         return ConditionalBuilder(
           condition: cubit.userModel!.savedJobList!.isNotEmpty,
-          fallback: (context) => currentState(context: context,
-            image: 'assets/images/access_state/Icon.png',
-            title: 'Nothing has been saved Yet',
-            subTitle: 'Press the star icon on the job you want to save',
+          fallback: (context) => Center(
+            child: currentState(
+              context: context,
+              image: 'assets/images/access_state/Icon.png',
+              title: 'Nothing has been saved Yet',
+              subTitle: 'Press the star icon on the job you want to save',
+            ),
           ),
           builder: (context) => _savedBody(
             context: context,
@@ -32,7 +35,6 @@ class SavedScreen extends StatelessWidget {
       },
     );
   }
-
 
   Widget _savedBody({
     required context,

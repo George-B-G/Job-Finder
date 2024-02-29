@@ -18,7 +18,7 @@ class ForgetPasswordScreen extends StatelessWidget {
     return BlocConsumer<JobFinderCubit, JobFinderState>(
       listener: (context, state) {
         if (state is AuthRestPasswordErrorState) {
-          print('error has happened ${state.error}');
+          // print('error has happened ${state.error}');
         } else if (state is AuthRestPasswordSuccessState) {
           pushReplacementToPage(
             context: context,

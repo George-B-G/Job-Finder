@@ -188,7 +188,7 @@ class JobFinderCubit extends Cubit<JobFinderState> {
   ];
   void changeSelectedJobType({required int index}) {
     jobCardList[index]['selected'] = (isJobSelectd = !isJobSelectd);
-    print(isJobSelectd);
+    // print(isJobSelectd);
     emit(SelectedJobTypeCardState());
   }
 
@@ -233,7 +233,7 @@ class JobFinderCubit extends Cubit<JobFinderState> {
   }) {
     selectedCountryIndex = isSelected ? index : 0;
     filterChoiceChip[index]['selected'] = isSelected;
-    emit(filterChoiceChipState());
+    emit(FilterChoiceChipState());
   }
 
 // user Log-in, sign-up, rest-password, create-user-document('users') and get-user-data
@@ -287,7 +287,7 @@ class JobFinderCubit extends Cubit<JobFinderState> {
       CacheHelper.putBoolData(key: 'rememberMe', value: false);
       emit(AuthSignOutSuccessState());
     }).catchError((error) {
-      print(error.toString());
+      // print(error.toString());
       emit(AuthSignOutErrorState(error.toString()));
     });
   }
@@ -401,7 +401,7 @@ class JobFinderCubit extends Cubit<JobFinderState> {
       idToken: googleAuth.idToken,
     );
     await FirebaseAuth.instance.signInWithCredential(credential).then((value) {
-      print(value);
+      // print(value);
       userCreateDocFunction(
         email: value.user!.email!,
         userName: value.user!.displayName!,
@@ -411,7 +411,7 @@ class JobFinderCubit extends Cubit<JobFinderState> {
       CacheHelper.putBoolData(key: 'rememberMe', value: true);
       emit(AuthLoginGoogleSuccessState(value.user!.uid));
     }).catchError((error) {
-      print(error.toString());
+      // print(error.toString());
       emit(AuthLoginGoogleErrorState(error.toString()));
     });
   }
@@ -444,8 +444,8 @@ class JobFinderCubit extends Cubit<JobFinderState> {
     ).then((value) {
       apiData.clear();
       apiData = value.data['data'];
-      print('*' * 50);
-      print(apiData);
+      // print('*' * 50);
+      // print(apiData);
       emit(GetApiSuccessState());
     }).catchError((error) {
       // print(error.toString());
@@ -498,7 +498,7 @@ class JobFinderCubit extends Cubit<JobFinderState> {
       searchData = value.data['data'];
       emit(GetApiSearchSuccessState());
     }).catchError((error) {
-      print(error.toString());
+      // print(error.toString());
       emit(GetApiSearchErrorState(error.toString()));
     });
   }

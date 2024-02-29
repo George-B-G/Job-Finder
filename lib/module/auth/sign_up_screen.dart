@@ -22,7 +22,7 @@ class SignUpScreen extends StatelessWidget {
       listener: (context, state) {
         var cubit = JobFinderCubit.get(context);
         if (state is AuthSignUpErrorState) {
-          print('error in sign up ${state.error}');
+          // print('error in sign up ${state.error}');
         } else if (state is AuthSignUpSuccessState) {
           CacheHelper.putStringData(key: 'uid', value: state.userID)
               .then((val) {
@@ -33,7 +33,7 @@ class SignUpScreen extends StatelessWidget {
             cubit.jobCardList.any((element) => element['selected'] == true
                 ? element['selected'] = false
                 : element['selected'] = false);
-                
+
             pushReplacementToPage(
               context: context,
               screenName: TypeOfWorkScreen(),
@@ -41,7 +41,7 @@ class SignUpScreen extends StatelessWidget {
           });
         }
         if (state is AuthLoginGoogleErrorState) {
-          print('error in sign up ${state.error}');
+          // print('error in sign up ${state.error}');
         } else if (state is AuthLoginGoogleSuccessState) {
           CacheHelper.putStringData(key: 'uid', value: state.userID)
               .then((val) {
@@ -62,26 +62,26 @@ class SignUpScreen extends StatelessWidget {
       builder: (context, state) {
         var cubit = JobFinderCubit.get(context);
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           appBar: appbarWithLogo(showingAction: true),
           body: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Form(
               key: formKey,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    buildCustomTitle(
-                      title: 'Create Account',
-                      subTitle:
-                          'Please Create an account to find your dream job',
-                    ),
-                    verticalSpace(
-                      value: 3,
-                    ),
-                    // username text form field
-                    customTextField(
-                                          onTapFunction: (){},
-                      onChangeFunction: (value){},
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildCustomTitle(
+                    title: 'Create Account',
+                    subTitle: 'Please Create an account to find your dream job',
+                  ),
+                  verticalSpace(
+                    value: 3,
+                  ),
+                  // username text form field
+                  customTextField(
+                    onTapFunction: () {},
+                    onChangeFunction: (value) {},
                     textEditingController: usernameController,
                     hinttextValue: 'Username',
                     prefixIconData: const Icon(Icons.person),
@@ -95,113 +95,114 @@ class SignUpScreen extends StatelessWidget {
                     },
                   ),
 
-                    verticalSpace(
-                      value: 1,
-                    ),
-                    // email text form field
-                    customTextField(
-                                          onTapFunction: (){},
-                      onChangeFunction: (value){},
+                  verticalSpace(
+                    value: 1,
+                  ),
+                  // email text form field
+                  customTextField(
+                    onTapFunction: () {},
+                    onChangeFunction: (value) {},
                     textEditingController: emailController,
                     hinttextValue: 'Email',
                     prefixIconData: const Icon(Icons.email),
                     keyboardTextInputType: TextInputType.emailAddress,
                     validatorFunction: (String val) {
-                        if (val.isEmpty) {
-                          return 'Email must not be empty';
-                        } else if (val.contains('@') == false) {
-                          return 'missing @ sign';
-                        } else {
-                          return null;
-                        }
-                      },
+                      if (val.isEmpty) {
+                        return 'Email must not be empty';
+                      } else if (val.contains('@') == false) {
+                        return 'missing @ sign';
+                      } else {
+                        return null;
+                      }
+                    },
                   ),
-                    verticalSpace(value: 1),
-                    // password text form field
-                    
-                    customTextField(
-                                          onTapFunction: (){},
-                      onChangeFunction: (value){},
+                  verticalSpace(value: 1),
+                  // password text form field
+
+                  customTextField(
+                    onTapFunction: () {},
+                    onChangeFunction: (value) {},
                     textEditingController: passwordController,
                     hinttextValue: 'Password',
                     prefixIconData: const Icon(Icons.lock),
                     keyboardTextInputType: TextInputType.visiblePassword,
                     isObsecureText: cubit.isPasswordVisible,
-                    suffixIconData: IconButton(onPressed: () => cubit.changePasswordVisibility(), 
-                    icon: Icon(cubit.passwordVisibilityIcon) ,
+                    suffixIconData: IconButton(
+                      onPressed: () => cubit.changePasswordVisibility(),
+                      icon: Icon(cubit.passwordVisibilityIcon),
                     ),
                     validatorFunction: (String val) {
-                        if (val.isEmpty || val.length < 8) {
-                          return 'Password must be at least 8 characters';
-                        } else {
-                          return null;
+                      if (val.isEmpty || val.length < 8) {
+                        return 'Password must be at least 8 characters';
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+                  // verticalSpace(value: 13),
+                  const Expanded(child: SizedBox()),
+                  fastNavigatorLink(
+                    buttonStyleVal:
+                        Theme.of(context).primaryTextTheme.labelMedium,
+                    context: context,
+                    text: 'Already have an account? ',
+                    buttonTitle: 'Login',
+                    onPress: () {
+                      pushReplacementToPage(
+                        context: context,
+                        screenName: LoginScreen(),
+                      );
+                    },
+                  ),
+                  verticalSpace(value: 1),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          cubit.userSignUpFunction(
+                            email: emailController.text,
+                            username: usernameController.text,
+                            password: passwordController.text,
+                          );
                         }
                       },
-                  ),
-                    verticalSpace(value: 8),
-                    fastNavigatorLink(
-                      buttonStyleVal:
-                          Theme.of(context).primaryTextTheme.labelMedium,
-                      context: context,
-                      text: 'Already have an account? ',
-                      buttonTitle: 'Login',
-                      onPress: () {
-                        pushReplacementToPage(
-                          context: context,
-                          screenName: LoginScreen(),
-                        );
-                      },
-                    ),
-                    verticalSpace(value: 1),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {
-                            cubit.userSignUpFunction(
-                              email: emailController.text,
-                              username: usernameController.text,
-                              password: passwordController.text,
-                            );
-                          }
-                        },
-                        child: Text(
-                          'Create an account',
-                          style: Theme.of(context).primaryTextTheme.labelLarge,
-                        ),
+                      child: Text(
+                        'Create an account',
+                        style: Theme.of(context).primaryTextTheme.labelLarge,
                       ),
                     ),
-                    verticalSpace(value: 1),
-                    const Row(
-                      children: [
-                        Expanded(child: Divider()),
-                        Text(
-                          " OR Login with Account ",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                        Expanded(child: Divider()),
-                      ],
-                    ),
-                    verticalSpace(value: 1),
-                    // to sign up with google or facebook
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        accessWithFacebookOrGoogle(
-                          title: 'Google',
-                          image: googleLogo,
-                          ontap: () => cubit.signInWithGoogle(),
-                        ),
-                        horizontalSpace(value: 1),
-                        accessWithFacebookOrGoogle(
-                          title: 'Facebook',
-                          iconData: Icons.facebook,
-                          ontap: () => cubit.signInWithFacebook(),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                  ),
+                  verticalSpace(value: 1),
+                  const Row(
+                    children: [
+                      Expanded(child: Divider()),
+                      Text(
+                        " OR Login with Account ",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                      Expanded(child: Divider()),
+                    ],
+                  ),
+                  verticalSpace(value: 1),
+                  // to sign up with google or facebook
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      accessWithFacebookOrGoogle(
+                        title: 'Google',
+                        image: googleLogo,
+                        ontap: () => cubit.signInWithGoogle(),
+                      ),
+                      horizontalSpace(value: 1),
+                      accessWithFacebookOrGoogle(
+                        title: 'Facebook',
+                        iconData: Icons.facebook,
+                        ontap: () => cubit.signInWithFacebook(),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

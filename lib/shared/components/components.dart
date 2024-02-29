@@ -396,6 +396,7 @@ Widget currentState({
     padding: const EdgeInsets.all(10.0),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset(
           image,
@@ -407,16 +408,16 @@ Widget currentState({
           title: title,
           subTitle: subTitle,
         ),
-        isNeedButton == false
-            ? const SizedBox()
-            : ElevatedButton(
-                onPressed: () => pushReplacementToPage(
-                    context: context, screenName: screen!),
-                child: Text(
-                  buttonTitle,
-                  style: Theme.of(context).primaryTextTheme.labelLarge,
-                ),
-              ),
+        // isNeedButton == false
+            // ? const SizedBox()
+            // : ElevatedButton(
+            //     onPressed: () => pushReplacementToPage(
+            //         context: context, screenName: screen!),
+            //     child: Text(
+            //       buttonTitle,
+            //       style: Theme.of(context).primaryTextTheme.labelLarge,
+            //     ),
+            //   ),
       ],
     ),
   );

@@ -29,7 +29,7 @@ class FirebaseMessageApi {
     String? token = await FirebaseMessaging.instance.getToken();
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
     // print('User granted permission: ${settings.authorizationStatus}');
-    // print('=========================\n$token');
+    print('=========================\n$token\n==============================');
   }
 
   static getNotificationOnForeground() {

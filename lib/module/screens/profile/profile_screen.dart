@@ -10,7 +10,6 @@ import 'package:amit_job_finder/shared/cubit/job_finder_cubit.dart';
 import 'package:amit_job_finder/shared/cubit/job_finder_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -129,7 +128,7 @@ class ProfileScreen extends StatelessWidget {
                           text: 'Applied',
                           value: '${cubit.userModel!.appliedJobList!.length}'),
                       const VerticalDivider(),
-                      buildReviewItem(text: 'Reviewed', value: '66'),
+                      buildReviewItem(text: 'Reviewed', value: '0'),
                       const VerticalDivider(),
                       buildReviewItem(
                           text: 'contacted',
@@ -311,8 +310,11 @@ class ProfileScreen extends StatelessWidget {
                 child: CircleAvatar(
                   radius: profileHeight / 2,
                   backgroundImage: NetworkImage(
-                    cubitVariable.userModel?.image ??
-                        'https://th.bing.com/th/id/OIP.gV1cXI_SNBK_nU1yrE_hcwHaGp?w=193&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7',
+                    cubitVariable.userModel!.image!.isNotEmpty
+                        ? cubitVariable.userModel!.image!
+                        : (cubitVariable.imageURL == null
+                            ? 'https://th.bing.com/th/id/OIP.gV1cXI_SNBK_nU1yrE_hcwHaGp?w=193&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7'
+                            : cubitVariable.imageURL!),
                   ),
                 ),
               ),

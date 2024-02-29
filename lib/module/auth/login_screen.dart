@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
     return BlocConsumer<JobFinderCubit, JobFinderState>(
       listener: (context, state) {
         if (state is AuthLoginErrorState) {
-          print('Error has happened ${state.error}');
+          // print('Error has happened ${state.error}');
         } else if (state is AuthLoginSuccessState) {
           CacheHelper.putStringData(key: 'uid', value: state.userID)
               .then((val) {
@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
           });
         }
         if (state is AuthLoginGoogleErrorState) {
-          print('Error has happened ${state.error}');
+          // print('Error has happened ${state.error}');
         } else if (state is AuthLoginGoogleSuccessState) {
           CacheHelper.putStringData(key: 'uid', value: state.userID)
               .then((val) {
